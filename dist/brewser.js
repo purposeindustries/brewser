@@ -1,4 +1,4 @@
-(function(global) {
+(function() {
 
     'use strict';
 
@@ -10,7 +10,7 @@
         _init: function() {
 
             // Version bumped by Gulp, don't touch
-            this.VERSION = '0.4.0';
+            this.VERSION = '0.5.0-rc1';
 
             var _this = this;
 
@@ -449,6 +449,11 @@
         }
     };
 
-    _brewser._init();
-    global.BREWSER = global.br = _brewser;
-}(this));
+    
+    if (module && module.exports) {
+      module.exports = _brewser;
+    } else {
+      _brewser._init();
+      window.BREWSER = window.br = _brewser;
+    }
+}());
