@@ -1,4 +1,4 @@
-(function(global) {
+(function() {
 
     'use strict';
 
@@ -449,6 +449,11 @@
         }
     };
 
-    _brewser._init();
-    global.BREWSER = global.br = _brewser;
-}(this));
+    
+    if (module && module.exports) {
+      module.exports = _brewser;
+    } else {
+      _brewser._init();
+      window.BREWSER = window.br = _brewser;
+    }
+}());
